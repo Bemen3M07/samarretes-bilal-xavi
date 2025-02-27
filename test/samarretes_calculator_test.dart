@@ -38,4 +38,29 @@ void main() {
       expect(SamarretesCalculator.preuDefinitiu(10, 'Large', 2), equals(10 * 13.50 - 20));
     });
   });
+
+  group('Proves d\'integració', () {
+    test('Integració: preuDefinitiu utilitza correctament calculaPreuSamarretes i calculaDescompte', () {
+      expect(SamarretesCalculator.preuDefinitiu(5, 'Small', 1), equals(5 * 7.99 * 0.9));
+      expect(SamarretesCalculator.preuDefinitiu(10, 'Large', 2), equals(10 * 13.50 - 20));
+    });
+
+    test('Integració: Interfície d\'usuari mostra el preu correctament', () async {
+      // Aquesta prova requereix un entorn d'execució de widgets (WidgetTester)
+      // Es pot implementar utilitzant WidgetTester per simular l'entrada de l'usuari
+      // i verificar el resultat mostrat.
+    });
+  });
+
+  group('Proves de regressió', () {
+    test('Regressió: calculaPreuSamarretes funciona després d\'afegir una nova talla', () {
+      expect(SamarretesCalculator.calculaPreuSamarretes(5, 'Small'), equals(5 * 7.99));
+      expect(SamarretesCalculator.calculaPreuSamarretes(5, 'NewSize'), equals(0)); // Nova talla no implementada
+    });
+
+    test('Regressió: calculaDescompte funciona després d\'afegir un nou tipus de descompte', () {
+      expect(SamarretesCalculator.calculaDescompte(100, 1), equals(10));
+      expect(SamarretesCalculator.calculaDescompte(100, 3), equals(0)); // Nou descompte no implementat
+    });
+  });
 }
